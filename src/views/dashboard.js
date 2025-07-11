@@ -168,6 +168,13 @@ async function renderCustomerDashboard(div, user) {
       alert("Error al cargar datos de la mascota");
     }
   }
+   const logoutBtn = div.querySelector("#logout-btn");
+    logoutBtn.addEventListener("click", () => {
+    localStorage.removeItem("currentUser");
+    alert("Sesión cerrada correctamente");
+    history.replaceState({}, "", "/landing");
+    import("./landing.js").then(module => module.default(div));
+  });
 }
 
 // 🛠️ WORKER DASHBOARD
@@ -271,6 +278,15 @@ async function renderWorkerDashboard(div) {
         }
       });
     });
+
+    // LOGOUT BUTTON
+    const logoutBtn = div.querySelector("#logout-btn");
+    logoutBtn.addEventListener("click", () => {
+    localStorage.removeItem("currentUser");
+    alert("Sesión cerrada correctamente");
+    history.replaceState({}, "", "/landing");
+    import("./landing.js").then(module => module.default(div));
+  });
 
     // ✅ GET STAYS
     const staysRes = await fetch("http://localhost:3000/stays");
