@@ -2,12 +2,16 @@ import landing from "./src/views/landing.js";
 import login from "./src/views/login.js";
 import register from "./src/views/register.js";
 import dashboard from "./src/views/dashboard.js";
+import stay from './src/views/stay.js';
+
 
 const routes = {
    "/": { view: landing, protected: false },
    "/login": { view: login, protected: false },
    "/register": { view: register, protected: false },
-   "/dashboard": { view: dashboard, protected: true }
+   "/dashboard": { view: dashboard, protected: true },
+   "/stays": { view: stay, protected: true },
+
 };
 
 const rootDiv = document.getElementById("root");
@@ -46,5 +50,3 @@ export function initRouter() {
 
   render(window.location.pathname);
 }
-
-

@@ -33,14 +33,6 @@
   ],
   "pets": [
     {
-      "id": "da8e",
-      "nombre": "patacon",
-      "tipo": "perro",
-      "edad": 2,
-      "image": null,
-      "ownerId": "0001"
-    },
-    {
       "id": "061d",
       "nombre": "lulu",
       "tipo": "gato",
