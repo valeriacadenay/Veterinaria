@@ -1,9 +1,65 @@
 {
   "roles": [
-    { "id": 1, "nombre": "worker" },
-    { "id": 2, "nombre": "customer" }
+    {
+      "RolId": 1,
+      "nombre": "worker",
+      "id": "f9f7"
+    },
+    {
+      "RolId": 2,
+      "nombre": "customer",
+      "id": "d872"
+    }
   ],
-  "users": [],
-  "pets": [],
+  "users": [
+    {
+      "id": "9a8f",
+      "nombre": "bruno",
+      "identidad": "12345",
+      "telefono": "123456",
+      "direccion": "cra 68",
+      "email": "bruno@gmail.com",
+      "contrasena": "123",
+      "rolId": 2
+    },
+    {
+      "id": "0001",
+      "nombre": "admin",
+      "identidad": "12345",
+      "telefono": "123456",
+      "direccion": "cra 68",
+      "email": "admin@gmail.com",
+      "contrasena": "admin123",
+      "rolId": 1
+    },
+    {
+      "id": "79db",
+      "nombre": "bruno",
+      "identidad": "12345",
+      "telefono": "123456",
+      "direccion": "cra 68",
+      "email": "bruno12@gmail.com",
+      "contrasena": "123",
+      "rolId": 2
+    }
+  ],
+  "pets": [
+    {
+      "id": "061d",
+      "nombre": "lulu",
+      "tipo": "gato",
+      "edad": 4,
+      "image": null,
+      "ownerId": "0001"
+    },
+    {
+      "id": "92ac",
+      "nombre": "pelusa",
+      "tipo": "gato",
+      "edad": 2,
+      "image": "https://www.purina.es/sites/default/files/styles/ttt_image_510/public/2024-02/sitesdefaultfilesstylessquare_medium_440x440public2022-06Persian20Long20Hair.2.jpg?itok=qzNV_HuV",
+      "ownerId": "9a8f"
+    }
+  ],
   "stays": []
 }
