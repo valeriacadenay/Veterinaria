@@ -14,7 +14,7 @@
 }
 
 .dashboard-header h2 {
-  font-size: 2.2rem; /* Un poco más grande para impacto */
+  font-size: 2.2rem;
   color: #333;
 }
 
@@ -55,9 +55,8 @@
 /* --- Contenedor de las Tarjetas de Mascota --- */
 .pets-container {
   display: grid;
-  /* Esta línea es genial porque ya es responsive. Crea columnas automáticas. */
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 2rem; /* Un poco más de espacio */
+  gap: 2rem; 
 }
 
 /* --- Estilos de cada Tarjeta de Mascota --- */
@@ -77,7 +76,7 @@
 
 .pet-card img {
   width: 100%;
-  height: 180px; /* Un poco más altas las imágenes */
+  height: 180px; 
   object-fit: cover;
   border-radius: 10px;
   margin-bottom: 1rem;
@@ -175,7 +174,7 @@
   border: 1px solid #ccc;
   border-radius: 8px;
   font-size: 1rem;
-  box-sizing: border-box; /* Importante para que el padding no desborde */
+  box-sizing: border-box;
 }
 
 #pet-form .form-buttons {
@@ -185,7 +184,7 @@
 }
 
 #pet-form button {
-  flex: 1; /* Ocupan el mismo espacio */
+  flex: 1; 
   padding: 12px;
   border: none;
   border-radius: 8px;
@@ -199,27 +198,195 @@
 #cancel-pet-form { background-color: #bdc3c7; color: #333; }
 #cancel-pet-form:hover { background-color: #a5aab0; }
 
-/* === ESTILOS PARA PANTALLAS GRANDES (PC) === */
-/* Se aplicarán solo cuando la pantalla mida 1024px o más */
+
+/* === ESTILOS PARA EL DASHBOARD DEL TRABAJADOR === */
+
+#worker-dashboard {
+  padding: 2.5rem;
+  font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+  background-color: #f8f9fa; 
+}
+
+/* --- Encabezado Principal --- */
+#worker-dashboard > h2 {
+  font-size: 2.5rem;
+  color: #333;
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+#worker-dashboard {
+    position: relative;
+}
+
+#logout-btn {
+  position: absolute;
+  top: 2.5rem;
+  right: 2.5rem;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  background-color: #ff6b6b;
+  color: white;
+  transition: all 0.3s ease;
+}
+
+#logout-btn:hover {
+  background-color: #e04848;
+  transform: translateY(-2px);
+}
+
+
+/* --- Contenedor de las 3 secciones --- */
+.worker-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2.5rem;
+  margin-top: 2rem;
+}
+
+.worker-content h3 {
+  font-size: 1.8rem;
+  color: #444;
+  border-bottom: 3px solid #6c63ff;
+  padding-bottom: 0.5rem;
+  margin-bottom: 1.5rem;
+  grid-column: 1 / -1;
+}
+
+/* Estilos para los contenedores de tarjetas */
+#users-container,
+#pets-container,
+#stays-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* --- Estilos de las tarjetas genéricas --- */
+.user-card,
+.pet-card,
+.stay-card {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.07);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-left: 5px solid transparent;
+}
+
+.user-card:hover,
+.pet-card:hover,
+.stay-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* Colores de borde para diferenciar cada tipo de tarjeta */
+.user-card { border-color: #3498db; }
+.pet-card { border-color: #f1c40f; }
+.stay-card { border-color: #2ecc71; }
+
+.user-card p,
+.pet-card p,
+.stay-card p {
+  margin: 0.4rem 0;
+  color: #555;
+  font-size: 0.95rem;
+}
+
+.user-card p strong,
+.pet-card p strong,
+.stay-card p strong {
+  font-size: 1.2rem;
+  color: #333;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+/* --- Estilos para los botones dentro de las tarjetas --- */
+.user-card button,
+.pet-card button {
+  margin-top: 1rem;
+  margin-right: 0.5rem;
+  padding: 6px 14px;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.delete-user-btn,
+.delete-pet-btn {
+  background-color: #e74c3c;
+  color: white;
+}
+.delete-user-btn:hover,
+.delete-pet-btn:hover {
+  background-color: #c0392b;
+}
+
+.edit-pet-btn {
+  background-color: #3498db;
+  color: white;
+}
+.edit-pet-btn:hover {
+  background-color: #2980b9;
+}
+
+
+/* --- Botón de Gestionar Estancias --- */
+#manage-stays-btn {
+  font-size: 1rem;
+  font-weight: bold;
+  color: white;
+  background-color: #6c63ff;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  grid-column: 3;
+  justify-self: end; 
+ padding: 0.8rem 1.5rem;
+}
+#manage-stays-btn:hover {
+    background-color: #5249d1;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(108, 99, 255, 0.4);
+}
+
+@media (max-width: 1200px) {
+    .worker-content {
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    }
+    #manage-stays-btn {
+        grid-column: auto; 
+    }
+}
 
 @media (min-width: 1024px) {
 
   #dashboard {
-    padding: 3rem 5rem; /* Más espacio a los lados */
+    padding: 3rem 5rem; 
   }
 
   .dashboard-header h2 {
-    font-size: 2.8rem; /* Título principal más grande */
+    font-size: 2.8rem; 
   }
 
   .pets-container {
-    /* Forzamos un máximo de 4 columnas para que no se vea muy lleno */
+    
     grid-template-columns: repeat(4, 1fr);
-    gap: 2.5rem; /* Mayor separación entre tarjetas */
+    gap: 2.5rem; 
   }
 
   .pet-card img {
-    height: 220px; /* Imágenes más altas en tarjetas más grandes */
+    height: 220px; 
   }
 
 }

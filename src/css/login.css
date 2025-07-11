@@ -17,17 +17,12 @@ body {
 }
 
 /* --- Contenedor Principal del Login --- */
-/*
-  ESTA ES LA REGLA CLAVE.
-  Aplica el centrado directamente al contenedor de la vista de login,
-  ocupando toda la altura de la pantalla (100vh) sin tocar el <body>.
-*/
 .login-page-container {
     display: flex;
-    justify-content: center; /* Centra horizontalmente */
-    align-items: center;    /* Centra verticalmente */
+    justify-content: center;
+    align-items: center;   
     width: 100%;
-    min-height: 100vh;      /* Ocupa todo el alto de la pantalla */
+    min-height: 100vh;    
     padding: 20px;
     box-sizing: border-box;
 }
@@ -40,7 +35,7 @@ body {
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
   width: 100%;
   max-width: 450px;
-  text-align: left; /* Título y campos alineados a la izquierda */
+  text-align: left;
 }
 
 #login h2 {
@@ -115,6 +110,6 @@ body {
 }
 
 #login-form button:hover {
-  background: #5a28d1; /* Un poco más oscuro */
+  background: #5a28d1;
   transform: translateY(-2px);
 }

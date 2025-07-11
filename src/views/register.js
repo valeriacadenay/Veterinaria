@@ -46,7 +46,7 @@ export default function register(div) {
     </section>
   `;
 
-  // --- Lógica del formulario (la tuya ya es correcta, solo la incluimos) ---
+  // --- formulario ---
 
   const $registerForm = document.getElementById("register-form");
   const $nombre = document.getElementById("nombre");
@@ -103,7 +103,7 @@ export default function register(div) {
             alert("Registro exitoso, ahora puedes iniciar sesión.");
 
             history.pushState({}, "", "/login");
-            document.body.className = ''; // Limpiar clase del body
+            document.body.className = '';
             import("./login.js").then(module => module.default(div));
         }
     } catch (error) {

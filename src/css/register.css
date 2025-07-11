@@ -1,10 +1,4 @@
 /* === Estilos para la Página de Registro === */
-
-/*
-  Usaremos un layout de página que centre el contenido,
-  ideal para formularios. Puedes usar una clase en el body
-  como <body class="form-page-layout"> para activarlo.
-*/
 .form-page-layout {
   display: flex;
   justify-content: center;
@@ -20,7 +14,7 @@
   border-radius: 20px;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
   width: 100%;
-  max-width: 550px; /* Un poco más ancho para más campos */
+  max-width: 550px;
   text-align: center;
 }
 
@@ -35,13 +29,8 @@
 #register-form {
   display: flex;
   flex-direction: column;
-  gap: 1.2rem; /* Espacio entre cada campo */
+  gap: 1.2rem; 
 }
-
-/*
-  Reutilizamos el estilo de grupo de input con ícono
-  que usamos en el login para consistencia.
-*/
 .input-group {
   position: relative;
 }
@@ -57,7 +46,7 @@
 
 .input-group input {
   width: 100%;
-  padding: 1rem 1rem 1rem 3.2rem; /* Espacio a la izq. para el ícono */
+  padding: 1rem 1rem 1rem 3.2rem; 
   border: 1px solid #dcdcdc;
   border-radius: 10px;
   background-color: white;
@@ -70,7 +59,7 @@
 
 .input-group input:focus {
   outline: none;
-  border-color: #34c759; /* Verde para consistencia con el dashboard */
+  border-color: #34c759; 
   box-shadow: 0 0 0 3px rgba(52, 199, 89, 0.15);
 }
 
@@ -106,7 +95,7 @@
 }
 
 .login-link a {
-  color: #6c63ff; /* Morado para que resalte */
+  color: #6c63ff;
   text-decoration: none;
   font-weight: 600;
 }

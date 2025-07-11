@@ -59,7 +59,27 @@
       "edad": 2,
       "image": "https://www.purina.es/sites/default/files/styles/ttt_image_510/public/2024-02/sitesdefaultfilesstylessquare_medium_440x440public2022-06Persian20Long20Hair.2.jpg?itok=qzNV_HuV",
       "ownerId": "9a8f"
+    },
+    {
+      "id": "9ec9",
+      "nombre": "lulu",
+      "tipo": "Perro",
+      "edad": 1,
+      "image": "https://m.media-amazon.com/images/I/61LhJ810lkL.jpg",
+      "ownerId": "9a8f"
     }
   ],
-  "stays": []
+  "stays": [
+    {
+      "id": "c154",
+      "petId": 61,
+      "ingreso": "2025-07-11",
+      "salida": "2025-07-25",
+      "valorDia": 50000,
+      "serviciosAdicionales": [
+        "corte"
+      ],
+      "completada": true
+    }
+  ]
 }

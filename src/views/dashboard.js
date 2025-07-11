@@ -9,7 +9,7 @@ export default function dashboard(div) {
     return;
   }
 
-  // ✅ Render según rol
+  // Render según rol
   if (user.rolId === 2) {
     renderCustomerDashboard(div, user);
   } else if (user.rolId === 1) {
@@ -64,24 +64,24 @@ async function renderCustomerDashboard(div, user) {
 
   // --- Lógica de los Eventos ---
 
-  // Evento para MOSTRAR el modal al hacer clic en "Agregar Mascota"
+ // Evento para MOSTRAR el modal al hacer clic en "Agregar Mascota"
   addPetBtn.addEventListener("click", () => {
     formTitle.textContent = "Agregar Nueva Mascota";
-    petForm.reset(); // Limpia el formulario
+    petForm.reset();
     editingPetId = null;
-    petFormModal.classList.remove("hidden"); // Le quitamos la clase para que se vea
+    petFormModal.classList.add("visible");
   });
 
   // Evento para OCULTAR el modal al hacer clic en "Cancelar"
-  // ¡Asegúrate de que dice "click" y no "clic"!
   cancelPetFormBtn.addEventListener("click", () => {
-    petFormModal.classList.add("hidden"); // Le añadimos la clase para ocultarlo
+    
+    petFormModal.classList.remove("visible");
   });
 
-  // También puedes hacer que se cierre si se hace clic fuera del contenido
+  // Evento para cerrar el modal si se hace clic en el fondo oscuro
   petFormModal.addEventListener("click", (event) => {
     if (event.target === petFormModal) {
-        petFormModal.classList.add("hidden");
+      petFormModal.classList.remove("visible");
     }
   });
 

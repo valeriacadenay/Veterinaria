@@ -1,7 +1,4 @@
 export default function login(div) {
-  // Ya no necesitamos tocar el body. La magia ocurre en el CSS
-  // con la clase ".login-page-container".
-
   div.innerHTML = `
     <div class="login-page-container">
       
@@ -26,7 +23,7 @@ export default function login(div) {
     </div>
   `;
 
-  // --- Lógica del formulario ---
+  // --- Formulario ---
 
   const $loginForm = document.getElementById("login-form");
   const $email = document.getElementById("email");
