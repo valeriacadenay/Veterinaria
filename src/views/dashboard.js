@@ -20,6 +20,7 @@ export default function dashboard(div) {
 }
 
 async function renderCustomerDashboard(div, user) {
+  // Se define el HTML. Nota que el modal tiene la clase "hidden" desde el principio.
   div.innerHTML = `
     <section id="dashboard">
       <div class="dashboard-header">
@@ -51,6 +52,7 @@ async function renderCustomerDashboard(div, user) {
     </section>
   `;
 
+  // --- Seleccionamos los elementos del DOM ---
   const petFormModal = div.querySelector("#pet-form-modal");
   const petForm = div.querySelector("#pet-form");
   const petsContainer = div.querySelector("#pets-container");
@@ -60,15 +62,27 @@ async function renderCustomerDashboard(div, user) {
 
   let editingPetId = null;
 
+  // --- Lógica de los Eventos ---
+
+  // Evento para MOSTRAR el modal al hacer clic en "Agregar Mascota"
   addPetBtn.addEventListener("click", () => {
     formTitle.textContent = "Agregar Nueva Mascota";
-    petForm.reset();
+    petForm.reset(); // Limpia el formulario
     editingPetId = null;
-    petFormModal.classList.remove("hidden");
+    petFormModal.classList.remove("hidden"); // Le quitamos la clase para que se vea
   });
 
+  // Evento para OCULTAR el modal al hacer clic en "Cancelar"
+  // ¡Asegúrate de que dice "click" y no "clic"!
   cancelPetFormBtn.addEventListener("click", () => {
-    petFormModal.classList.add("hidden");
+    petFormModal.classList.add("hidden"); // Le añadimos la clase para ocultarlo
+  });
+
+  // También puedes hacer que se cierre si se hace clic fuera del contenido
+  petFormModal.addEventListener("click", (event) => {
+    if (event.target === petFormModal) {
+        petFormModal.classList.add("hidden");
+    }
   });
 
   async function loadPets() {

@@ -1,72 +1,120 @@
+/* --- Variables de Color Globales --- */
+:root {
+  --primary-purple: #6a3de8;
+  --light-purple: #f0edfa;
+  --dark-text: #333333;
+  --light-text: #8a8a8a;
+  --border-color: #dcdcdc;
+  --white: #ffffff;
+  --body-bg: #f9f9f9;
+}
 
+/* --- Estilos Generales del Body --- */
+body {
+  font-family: 'Poppins', 'Segoe UI', sans-serif;
+  background-color: var(--body-bg);
+  margin: 0;
+}
+
+/* --- Contenedor Principal del Login --- */
+/*
+  ESTA ES LA REGLA CLAVE.
+  Aplica el centrado directamente al contenedor de la vista de login,
+  ocupando toda la altura de la pantalla (100vh) sin tocar el <body>.
+*/
+.login-page-container {
+    display: flex;
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center;    /* Centra verticalmente */
+    width: 100%;
+    min-height: 100vh;      /* Ocupa todo el alto de la pantalla */
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* --- Tarjeta del Formulario (#login) --- */
 #login {
+  background-color: var(--white);
+  padding: 3rem 4rem;
+  border-radius: 20px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 450px;
+  text-align: left; /* Título y campos alineados a la izquierda */
+}
+
+#login h2 {
+  color: var(--dark-text);
+  font-size: 2.2rem;
+  font-weight: 600;
+  margin-top: 0;
+  margin-bottom: 2rem;
+}
+
+/* --- Formulario y sus elementos --- */
+#login-form {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-  background: linear-gradient(to right, #c2e9fb, #a1c4fd);
+  flex-direction: column;
+  gap: 1.5rem;
 }
 
-.login-container {
-  background: white;
-  padding: 3rem 2.5rem;
-  border-radius: 15px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-  max-width: 380px;
+.input-group {
+  position: relative;
+}
+
+.input-group label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    color: var(--dark-text);
+}
+
+.input-group input {
   width: 100%;
-  text-align: center;
-  animation: fadeIn 0.6s ease-out;
-}
-
-.login-container h2 {
-  margin-bottom: 1.5rem;
-  font-size: 1.9rem;
-  color: #333;
-}
-
-#login-form input {
-  width: 100%;
-  padding: 12px;
-  margin-bottom: 1.2rem;
-  border: 1px solid #ccc;
-  border-radius: 8px;
+  padding: 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  color: var(--dark-text);
+  font-family: 'Poppins', 'Segoe UI', sans-serif;
   font-size: 1rem;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  box-sizing: border-box;
 }
 
-#login-form input:focus {
+.input-group input:focus {
   outline: none;
-  border-color: #6c63ff;
+  border-color: var(--primary-purple);
+  box-shadow: 0 0 0 3px var(--light-purple);
+}
+
+/* --- Enlace y Botón --- */
+.account-link {
+  color: var(--primary-purple);
+  text-decoration: none;
+  font-size: 0.9rem;
+  text-align: right;
+  display: block;
+  margin-top: -10px;
+  margin-bottom: 10px;
 }
 
 #login-form button {
-  width: 100%;
-  padding: 12px;
+  background: var(--primary-purple);
+  color: var(--white);
   border: none;
-  border-radius: 8px;
-  background-color: #6c63ff;
-  color: white;
-  font-weight: bold;
+  padding: 1rem;
+  border-radius: 10px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 600;
   cursor: pointer;
-  transition: background 0.3s ease;
-  font-size: 1rem;
+  width: 100%;
+  margin-top: 1rem;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 15px rgba(106, 61, 232, 0.3);
 }
 
 #login-form button:hover {
-  background-color: #5249d1;
-}
-
-.login-switch {
-  margin-top: 1rem;
-  font-size: 0.95rem;
-  color: #555;
-}
-
-.login-switch a {
-  color: #6c63ff;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-.login-switch a:hover {
-  text-decoration: underline;
+  background: #5a28d1; /* Un poco más oscuro */
+  transform: translateY(-2px);
 }

@@ -2,11 +2,13 @@
   "roles": [
     {
       "RolId": 1,
-      "nombre": "worker"
+      "nombre": "worker",
+      "id": "f9f7"
     },
     {
       "RolId": 2,
-      "nombre": "customer"
+      "nombre": "customer",
+      "id": "d872"
     }
   ],
   "users": [
@@ -29,6 +31,16 @@
       "email": "admin@gmail.com",
       "contrasena": "admin123",
       "rolId": 1
+    },
+    {
+      "id": "79db",
+      "nombre": "bruno",
+      "identidad": "12345",
+      "telefono": "123456",
+      "direccion": "cra 68",
+      "email": "bruno12@gmail.com",
+      "contrasena": "123",
+      "rolId": 2
     }
   ],
   "pets": [
@@ -39,6 +51,14 @@
       "edad": 4,
       "image": null,
       "ownerId": "0001"
+    },
+    {
+      "id": "92ac",
+      "nombre": "pelusa",
+      "tipo": "gato",
+      "edad": 2,
+      "image": "https://www.purina.es/sites/default/files/styles/ttt_image_510/public/2024-02/sitesdefaultfilesstylessquare_medium_440x440public2022-06Persian20Long20Hair.2.jpg?itok=qzNV_HuV",
+      "ownerId": "9a8f"
     }
   ],
   "stays": []
