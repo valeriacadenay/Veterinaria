@@ -191,10 +191,13 @@ async function renderCustomerDashboard(div, user) {
   });
 }
 
-// 🛠️ WORKER DASHBOARD
+// En tu archivo worker-dashboard.js
 async function renderWorkerDashboard(div) {
   div.innerHTML = `
     <section id="worker-dashboard">
+
+      <button class="back-btn">&larr; Volver</button>
+      
       <h2>Panel del Worker</h2>
       <button id="logout-btn">Cerrar sesión</button>
       <div class="worker-content">
@@ -211,10 +214,21 @@ async function renderWorkerDashboard(div) {
     </section>
   `;
 
+  // --- Seleccionamos los elementos ---
   const usersContainer = div.querySelector("#users-container");
   const petsContainer = div.querySelector("#pets-container");
   const staysContainer = div.querySelector("#stays-container");
   const manageStaysBtn = div.querySelector("#manage-stays-btn");
+  const logoutBtn = div.querySelector("#logout-btn");
+  
+  // --- FUNCIONALIDAD DEL BOTÓN DE VOLVER ---
+  const backBtn = div.querySelector(".back-btn");
+  backBtn.addEventListener("click", () => {
+    history.back(); // Simplemente va a la página anterior en el historial
+  });
+  
+  // El resto de tu código para el dashboard del trabajador va aquí...
+  // (Toda la lógica de fetch, delete, edit, etc.)
 
   // ✅ BOTÓN REDIRECCIONAR A stays.js
   manageStaysBtn.addEventListener("click", () => {
@@ -236,17 +250,17 @@ async function renderWorkerDashboard(div) {
     `).join("");
 
     // DELETE USER
-    const deleteUserBtns = usersContainer.querySelectorAll(".delete-user-btn");
-    deleteUserBtns.forEach(btn => {
-      btn.addEventListener("click", async (e) => {
-        const userId = e.target.getAttribute("data-id");
-        if (confirm("¿Eliminar usuario?")) {
-          await fetch(`http://localhost:3000/users/${userId}`, { method: "DELETE" });
-          alert("Usuario eliminado");
-          renderWorkerDashboard(div);
+    usersContainer.addEventListener("click", async (e) => {
+        if (e.target.classList.contains('delete-user-btn')) {
+            const userId = e.target.getAttribute("data-id");
+            if (confirm("¿Eliminar usuario?")) {
+                await fetch(`http://localhost:3000/users/${userId}`, { method: "DELETE" });
+                alert("Usuario eliminado");
+                renderWorkerDashboard(div);
+            }
         }
-      });
     });
+
 
     // GET PETS
     const petsRes = await fetch("http://localhost:3000/pets");
@@ -262,47 +276,43 @@ async function renderWorkerDashboard(div) {
       </div>
     `).join("");
 
-    // DELETE PET
-    const deletePetBtns = petsContainer.querySelectorAll(".delete-pet-btn");
-    deletePetBtns.forEach(btn => {
-      btn.addEventListener("click", async (e) => {
-        const petId = e.target.getAttribute("data-id");
-        if (confirm("¿Eliminar mascota?")) {
-          await fetch(`http://localhost:3000/pets/${petId}`, { method: "DELETE" });
-          alert("Mascota eliminada");
-          renderWorkerDashboard(div);
-        }
-      });
-    });
+    // DELETE & EDIT PET
+    petsContainer.addEventListener("click", async (e) => {
+        const target = e.target;
+        const petId = target.getAttribute("data-id");
 
-    // EDIT PET
-    const editPetBtns = petsContainer.querySelectorAll(".edit-pet-btn");
-    editPetBtns.forEach(btn => {
-      btn.addEventListener("click", async (e) => {
-        const petId = e.target.getAttribute("data-id");
-        const newName = prompt("Nuevo nombre de la mascota:");
-        if (newName) {
-          await fetch(`http://localhost:3000/pets/${petId}`, {
-            method: "PATCH",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ nombre: newName })
-          });
-          alert("Mascota actualizada");
-          renderWorkerDashboard(div);
+        if (target.classList.contains('delete-pet-btn')) {
+            if (confirm("¿Eliminar mascota?")) {
+                await fetch(`http://localhost:3000/pets/${petId}`, { method: "DELETE" });
+                alert("Mascota eliminada");
+                renderWorkerDashboard(div);
+            }
         }
-      });
+
+        if (target.classList.contains('edit-pet-btn')) {
+            const newName = prompt("Nuevo nombre de la mascota:");
+            if (newName) {
+                await fetch(`http://localhost:3000/pets/${petId}`, {
+                    method: "PATCH",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ nombre: newName })
+                });
+                alert("Mascota actualizada");
+                renderWorkerDashboard(div);
+            }
+        }
     });
 
     // LOGOUT BUTTON
-    const logoutBtn = div.querySelector("#logout-btn");
     logoutBtn.addEventListener("click", () => {
-    localStorage.removeItem("currentUser");
-    alert("Sesión cerrada correctamente");
-    history.replaceState({}, "", "/landing");
-    import("./landing.js").then(module => module.default(div));
-  });
+        localStorage.removeItem("currentUser");
+        alert("Sesión cerrada correctamente");
+        history.replaceState({}, "", "/");
+        // Asumiendo que tienes un login.js para la página principal
+        import("./login.js").then(module => module.default(div));
+    });
 
-    // ✅ GET STAYS
+    // GET STAYS
     const staysRes = await fetch("http://localhost:3000/stays");
     const stays = await staysRes.json();
 
@@ -318,7 +328,5 @@ async function renderWorkerDashboard(div) {
 
   } catch (error) {
     console.error(error);
-    alert("Error al cargar datos de usuarios, mascotas o estancias");
   }
 }
-
