@@ -1,9 +1,26 @@
 {
   "roles": [
-    { "id": 1, "nombre": "worker" },
-    { "id": 2, "nombre": "customer" }
+    {
+      "id": "1",
+      "nombre": "worker"
+    },
+    {
+      "id": "2",
+      "nombre": "customer"
+    }
   ],
-  "users": [],
+  "users": [
+    {
+      "id": "9a8f",
+      "nombre": "bruno",
+      "identidad": "12345",
+      "telefono": "123456",
+      "direccion": "cra 68",
+      "email": "bruno@gmail.com",
+      "contrasena": "123",
+      "rolId": 2
+    }
+  ],
   "pets": [],
   "stays": []
 }
