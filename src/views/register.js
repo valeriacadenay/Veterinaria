@@ -58,12 +58,10 @@ export default function register(div) {
   const $email = document.getElementById("email");
   const $password = document.getElementById("password");
 
-  // Listener para el enlace "Inicia Sesión"
   const $loginLink = document.getElementById("go-to-login");
   $loginLink.addEventListener("click", (e) => {
       e.preventDefault();
       history.pushState({}, "", "/login");
-      // Limpiamos la clase del body antes de ir a otra página
       document.body.className = '';
       import("./login.js").then(module => module.default(div));
   });
@@ -89,7 +87,7 @@ export default function register(div) {
                 direccion: $direccion.value,
                 email: $email.value,
                 contrasena: $password.value,
-                rolId: 2 // Rol de cliente
+                rolId: 2 
             };
 
             let postResponse = await fetch("http://localhost:3000/users", {

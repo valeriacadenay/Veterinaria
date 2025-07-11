@@ -1,6 +1,7 @@
 // File: src/js/auth.js
 import { render } from "/router.js";
 import { api } from "./api.js"; // Importamos la API
+import { alertError, alertSuccess } from "./alert.js";
 
 // ... (loginUser, logoutUser, isAuthenticated)
 
@@ -19,12 +20,12 @@ export function registerUser(e) {
   // Usamos el método post de nuestra api.js
   api.post("users", userData)
     .then(() => {
-      alert("¡Registro exitoso! Ahora puedes iniciar sesión.");
+      alertSuccess("¡Registro exitoso! Ahora puedes iniciar sesión.");
       history.pushState({}, "", "/login");
       render("/login");
     })
     .catch(error => {
       console.error("Error en el registro:", error);
-      alert("Hubo un error durante el registro. Inténtalo de nuevo.");
+      alertError("Hubo un error durante el registro. Inténtalo de nuevo.");
     });
 }

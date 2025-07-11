@@ -1,13 +1,8 @@
 import { alertError, alertSuccess } from "../js/alert.js";
-
-// En tu archivo login.js
 export default function login(div) {
-  // --- GUARDIA DE LOGIN AÑADIDO ---
-  // Antes de mostrar nada, revisamos si ya hay un usuario logueado.
   const user = JSON.parse(localStorage.getItem("currentUser"));
 
   if (user) {
-    // Si hay un usuario, comprobamos su rol y lo redirigimos a su dashboard.
     alert("Ya tienes una sesión activa. Redirigiendo a tu panel...");
     if (user.rolId === 1) { // Es un Worker
       history.replaceState({}, "", "/dashboard");
@@ -16,13 +11,8 @@ export default function login(div) {
       history.replaceState({}, "", "/dashboard");
       import("./dashboard.js").then(module => module.default(div, user));
     }
-    return; // Detenemos la ejecución para no mostrar el formulario de login.
-  }
-  // --- FIN DEL GUARDIA ---
-
-
-  // Si no hay ningún usuario logueado, entonces sí mostramos el formulario.
-  // (El resto de tu código de login.js sigue aquí)
+    return;
+  }D
   div.innerHTML = `
     <div class="login-page-container">
       <section id="login">

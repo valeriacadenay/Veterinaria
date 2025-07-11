@@ -21,7 +21,6 @@ export default function dashboard(div) {
 }
 
 async function renderCustomerDashboard(div, user) {
-  // Se define el HTML. Nota que el modal tiene la clase "hidden" desde el principio.
   div.innerHTML = `
     <section id="dashboard">
       <div class="dashboard-header">

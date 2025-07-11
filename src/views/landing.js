@@ -18,7 +18,7 @@ export default function landing() {
           </div>
         </section>
         <div class="landing-image">
-          <img src="https://cdn.pixabay.com/photo/2017/09/25/13/12/dog-2785074_1280.jpg" alt="Perro feliz en cuidado" />
+          <img src="https://m.media-amazon.com/images/I/61LhJ810lkL.jpg" alt="Perro feliz en cuidado" />
         </div>
       </main>
       <footer class="landing-footer">
