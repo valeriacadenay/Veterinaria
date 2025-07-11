@@ -2,13 +2,16 @@ export default async function stay(div) {
   const user = JSON.parse(localStorage.getItem("currentUser"));
   if (!user || user.rolId !== 1) {
     alert("Acceso denegado. Debes ser un trabajador para ver esta página.");
-    history.replaceState({}, "", "/login");
-    import("./login.js").then(module => module.default(div));
+    history.replaceState({}, "", "/dashboard");
+    import("./dashboard.js").then(module => module.default(div));
     return;
   }
 
   div.innerHTML = `
     <section id="stay-dashboard">
+      
+      <button class="back-btn">&larr; Volver</button>
+
       <h2>Gestión de Estancias</h2>
       <button id="add-stay-btn">Agregar Estancia</button>
 
@@ -16,7 +19,7 @@ export default async function stay(div) {
         <div class="modal-content">
           <h3>Registrar Nueva Estancia</h3>
           <form id="stay-form">
-            <input type="text" id="pet-id" placeholder="ID de la mascota" required />
+            <input type="number" id="pet-id" placeholder="ID de la mascota" required />
             <input type="number" id="valor-dia" placeholder="Valor por día" required min="0" />
             <input type="date" id="ingreso" required title="Fecha de Ingreso"/>
             <input type="date" id="salida" required title="Fecha de Salida"/>
@@ -42,6 +45,14 @@ export default async function stay(div) {
   const staysContainer = div.querySelector("#stays-container");
   const addStayBtn = div.querySelector("#add-stay-btn");
   const cancelStayFormBtn = div.querySelector("#cancel-stay-form");
+
+  // --- CÓDIGO AÑADIDO (2/2): La funcionalidad del botón ---
+  const backBtn = div.querySelector(".back-btn");
+  backBtn.addEventListener("click", () => {
+    history.back(); // Esto te devuelve a la página anterior (el dashboard del worker)
+  });
+
+  // El resto de tu código sigue igual...
 
   addStayBtn.addEventListener("click", () => {
     stayForm.reset();
@@ -125,7 +136,7 @@ export default async function stay(div) {
       if (!response.ok) throw new Error("Error al registrar la estancia");
       alert("Estancia registrada exitosamente");
       stayForm.reset();
-      stayFormModal.classList.remove("visible"); 
+      stayFormModal.classList.remove("visible");
       loadStays();
     } catch (error) {
       console.error(error);
