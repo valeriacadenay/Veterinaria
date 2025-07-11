@@ -1,0 +1,9 @@
+{
+  "roles": [
+    { "id": 1, "nombre": "worker" },
+    { "id": 2, "nombre": "customer" }
+  ],
+  "users": [],
+  "pets": [],
+  "stays": []
+}
