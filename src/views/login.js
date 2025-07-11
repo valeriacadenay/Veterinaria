@@ -1,3 +1,5 @@
+import { alertError, alertSuccess } from "../js/alert.js";
+
 // En tu archivo login.js
 export default function login(div) {
   // --- GUARDIA DE LOGIN AÑADIDO ---
@@ -55,11 +57,11 @@ export default function login(div) {
       let data = await response.json();
 
       if (data.length === 0) {
-        alert("Ese correo no existe, regístrate primero.");
+        alertError("Ese correo no existe, regístrate primero.");
       } else {
         const foundUser = data[0];
         if (foundUser.contrasena === $password.value) {
-          alert("Login exitoso");
+          alertSuccess("Login exitoso");
           localStorage.setItem("currentUser", JSON.stringify(foundUser));
 
           // Redirección basada en el rol
@@ -71,7 +73,7 @@ export default function login(div) {
             import("./dashboard.js").then(module => module.default(div, foundUser));
           }
         } else {
-          alert("Contraseña incorrecta");
+          alertError("Contraseña incorrecta");
         }
       }
     } catch (error) {

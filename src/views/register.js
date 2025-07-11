@@ -1,3 +1,5 @@
+import { alertError, alertSuccess } from "../js/alert.js";
+
 export default function register(div) {
   document.body.className = 'form-page-layout';
 
@@ -78,7 +80,7 @@ export default function register(div) {
         let data = await response.json();
 
         if (data.length > 0) {
-            alert("Este correo ya está registrado. Inicia sesión.");
+            alertSuccess("Este correo ya está registrado. Inicia sesión.");
         } else {
             const newUser = {
                 nombre: $nombre.value,
@@ -100,7 +102,7 @@ export default function register(div) {
                 throw new Error('No se pudo completar el registro.');
             }
 
-            alert("Registro exitoso, ahora puedes iniciar sesión.");
+            alertSuccess("Registro exitoso, ahora puedes iniciar sesión.");
 
             history.pushState({}, "", "/login");
             document.body.className = '';
@@ -108,7 +110,7 @@ export default function register(div) {
         }
     } catch (error) {
         console.error("Error en el registro:", error);
-        alert("Ocurrió un error. Por favor, intenta de nuevo.");
+        alertError("Ocurrió un error. Por favor, intenta de nuevo.");
     }
   }
 }

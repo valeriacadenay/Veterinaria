@@ -1,7 +1,9 @@
+import { alertError, alertSuccess } from "../js/alert.js";
+
 export default async function stay(div) {
   const user = JSON.parse(localStorage.getItem("currentUser"));
   if (!user || user.rolId !== 1) {
-    alert("Acceso denegado. Debes ser un trabajador para ver esta página.");
+    alertError("Acceso denegado. Debes ser un trabajador para ver esta página.");
     history.replaceState({}, "", "/dashboard");
     import("./dashboard.js").then(module => module.default(div));
     return;
@@ -104,7 +106,7 @@ export default async function stay(div) {
               const stayId = e.target.getAttribute("data-id");
               if (confirm(`¿Estás seguro de que quieres eliminar la estancia con ID ${stayId}?`)) {
                   await fetch(`http://localhost:3000/stays/${stayId}`, { method: "DELETE" });
-                  alert("Estancia eliminada");
+                  alertSuccess("Estancia eliminada");
                   loadStays();
               }
           }
@@ -134,13 +136,13 @@ export default async function stay(div) {
         body: JSON.stringify(stayData)
       });
       if (!response.ok) throw new Error("Error al registrar la estancia");
-      alert("Estancia registrada exitosamente");
+      alertSuccess("Estancia registrada exitosamente");
       stayForm.reset();
       stayFormModal.classList.remove("visible");
       loadStays();
     } catch (error) {
       console.error(error);
-      alert("Ocurrió un error al registrar la estancia");
+      alertError("Ocurrió un error al registrar la estancia");
     }
   });
 

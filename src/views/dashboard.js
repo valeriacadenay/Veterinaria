@@ -1,9 +1,10 @@
 import { renderNav } from '../components/nav.js';
+import { alertError, alertSuccess } from '../js/alert.js';
 
 export default function dashboard(div) {
   const user = JSON.parse(localStorage.getItem("currentUser"));
   if (!user) {
-    alert("Debes iniciar sesión primero.");
+    alertError("Debes iniciar sesión primero.");
     history.replaceState({}, "", "/login");
     import("./login.js").then(module => module.default(div));
     return;
@@ -110,7 +111,7 @@ async function renderCustomerDashboard(div, user) {
 
     } catch (error) {
       console.error(error);
-      alert("Error al cargar mascotas");
+      alertError("Error al cargar mascotas");
     }
   }
 
@@ -142,7 +143,7 @@ async function renderCustomerDashboard(div, user) {
           body: JSON.stringify(petData)
         });
         if (!response.ok) throw new Error("Error al editar la mascota");
-        alert("Mascota actualizada exitosamente");
+        alertSuccess("Mascota actualizada exitosamente");
       } else {
         response = await fetch("http://localhost:3000/pets", {
           method: "POST",
@@ -150,7 +151,7 @@ async function renderCustomerDashboard(div, user) {
           body: JSON.stringify(petData)
         });
         if (!response.ok) throw new Error("Error al registrar la mascota");
-        alert("Mascota registrada exitosamente");
+        alertSuccess("Mascota registrada exitosamente");
       }
 
       petForm.reset();
@@ -159,7 +160,7 @@ async function renderCustomerDashboard(div, user) {
 
     } catch (error) {
       console.error(error);
-      alert("Ocurrió un error al guardar la mascota");
+      alertError("Ocurrió un error al guardar la mascota");
     }
   });
 
@@ -179,13 +180,13 @@ async function renderCustomerDashboard(div, user) {
 
     } catch (error) {
       console.error(error);
-      alert("Error al cargar datos de la mascota");
+      alertError("Error al cargar datos de la mascota");
     }
   }
    const logoutBtn = div.querySelector("#logout-btn");
     logoutBtn.addEventListener("click", () => {
     localStorage.removeItem("currentUser");
-    alert("Sesión cerrada correctamente");
+    alertSuccess("Sesión cerrada correctamente");
     history.replaceState({}, "", "/landing");
     import("./landing.js").then(module => module.default(div));
   });
@@ -255,7 +256,7 @@ async function renderWorkerDashboard(div) {
             const userId = e.target.getAttribute("data-id");
             if (confirm("¿Eliminar usuario?")) {
                 await fetch(`http://localhost:3000/users/${userId}`, { method: "DELETE" });
-                alert("Usuario eliminado");
+                alertSuccess("Usuario eliminado");
                 renderWorkerDashboard(div);
             }
         }
@@ -284,7 +285,7 @@ async function renderWorkerDashboard(div) {
         if (target.classList.contains('delete-pet-btn')) {
             if (confirm("¿Eliminar mascota?")) {
                 await fetch(`http://localhost:3000/pets/${petId}`, { method: "DELETE" });
-                alert("Mascota eliminada");
+                alertSuccess("Mascota eliminada");
                 renderWorkerDashboard(div);
             }
         }
@@ -297,7 +298,7 @@ async function renderWorkerDashboard(div) {
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({ nombre: newName })
                 });
-                alert("Mascota actualizada");
+                alertSuccess("Mascota actualizada");
                 renderWorkerDashboard(div);
             }
         }
@@ -306,7 +307,7 @@ async function renderWorkerDashboard(div) {
     // LOGOUT BUTTON
     logoutBtn.addEventListener("click", () => {
         localStorage.removeItem("currentUser");
-        alert("Sesión cerrada correctamente");
+        alertSuccess("Sesión cerrada correctamente");
         history.replaceState({}, "", "/");
         // Asumiendo que tienes un login.js para la página principal
         import("./login.js").then(module => module.default(div));

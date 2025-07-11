@@ -13,16 +13,6 @@
   ],
   "users": [
     {
-      "id": "9a8f",
-      "nombre": "bruno",
-      "identidad": "12345",
-      "telefono": "123456",
-      "direccion": "cra 68",
-      "email": "bruno@gmail.com",
-      "contrasena": "123",
-      "rolId": 2
-    },
-    {
       "id": "0001",
       "nombre": "admin",
       "identidad": "12345",
